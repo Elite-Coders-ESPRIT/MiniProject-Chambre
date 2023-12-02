@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { Bloc } from 'src/app/Model/Bloc';
 import { ViewChambreComponent } from '../view-chambre/view-chambre.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PaginationService } from 'ngx-pagination';
 
 @Component({
   selector: 'app-chambres',
@@ -35,14 +36,14 @@ nombreChambres: number=0;
 title = 'Angular Search Using ng2-search-filter';
   searchText;
   chambre: Chambre[] = [];
-  p:number = 1 ; 
 
-POSTS: any;
-page: number = 1;
-count: number = 0;
-tableSize: number = 10;
-tableSizes: any = [5, 10, 15, 20];
-
+ //déclaration pagination 
+ p:number = 1 ; 
+ POSTS: any;
+ page: number = 1;
+ count: number = 0;
+ tableSize: number = 4;
+ tableSizes: any = [5, 10, 15, 20];
 postList(): void {
   this.serviceChambre.getAllChambres().subscribe((response) => {
     this.POSTS = response;
@@ -65,7 +66,7 @@ onTableSizeChange(event: any): void {
   
 
 
-  constructor(private fb: FormBuilder, private serviceChambre: ChambreService, private _http:HttpClient,private router: Router,private dialog:MatDialog) {
+  constructor(private fb: FormBuilder, private serviceChambre: ChambreService, private _http:HttpClient,private router: Router,private dialog:MatDialog, private paginationService: PaginationService) {
     this.chambreForm = this.fb.group({
       idChambre: [null, Validators.required],
       numeroChambre: [null, Validators.required],

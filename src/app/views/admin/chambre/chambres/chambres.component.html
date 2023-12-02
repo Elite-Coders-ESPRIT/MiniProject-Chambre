@@ -35,7 +35,13 @@
                   </tr>
                 </thead>
                 <tbody *ngIf="chambres">
-                  <tr *ngFor="let c of chambres | filter:searchText">
+                  <tr *ngFor="let c of chambres | filter:searchText| paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index">
                     <td class="pl-2"><i class="fas fa-bed fa-2x"></i></td>
                     <td class="pl-2">{{ c.idChambre }}</td>
                     <td class="pl-2">{{ c.numeroChambre }}</td>
@@ -64,5 +70,14 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="pagination-container d-flex justify-content-start">
+    <pagination-controls
+      previousLabel="Previous"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+      class="mat-paginator my-custom-pagination"
+      style="color: black"
+    ></pagination-controls>
   </div>
 </div>
