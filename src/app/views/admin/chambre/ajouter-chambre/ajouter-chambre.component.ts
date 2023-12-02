@@ -51,6 +51,7 @@ export class AjouterChambreComponent implements OnInit {
   saveChambre() {
    
          this.chambre.bloc=this.selectedBloc;
+         this.chambre.numeroChambre+=1;
     this.chambreService.createChambre(this.chambre).subscribe(
           () => {
             Swal.fire({

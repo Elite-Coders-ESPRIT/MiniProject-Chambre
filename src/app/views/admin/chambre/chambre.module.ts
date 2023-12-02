@@ -10,6 +10,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ViewChambreComponent } from './view-chambre/view-chambre.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MadirectiveDirective } from './chambres/madirective.directive';
 
 
 
@@ -20,11 +21,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AjouterChambreComponent,
     ModifierChambreComponent,
     ViewChambreComponent,
+    MadirectiveDirective,
+    
     
   ],
   imports: [
     CommonModule,
-    ChambreRoutingModule,FormsModule,Ng2SearchPipeModule,MatDialogModule,NgxPaginationModule
+    ChambreRoutingModule,FormsModule,Ng2SearchPipeModule,MatDialogModule,NgxPaginationModule,
   ]
 })
 export class ChambreModule { }
